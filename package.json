@@ -1,5 +1,5 @@
 {
-  "name": "fecho",
+  "name": "fetch-o",
   "author": "kazte",
   "description": "A typesafe fetch enhancer.",
   "version": "0.0.2",
@@ -44,14 +44,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Kazte/fetcho.git"
+    "url": "git+https://github.com/Kazte/fecho.git"
   },
   "bugs": {
-    "url": "https://github.com/Kazte/fetcho/issues"
+    "url": "https://github.com/Kazte/fecho/issues"
   },
   "keywords": [
     "fetch",
-    "fetcho",
+    "fecho",
     "typescript",
     "typesafe",
     "enhancer"

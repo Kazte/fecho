@@ -1,11 +1,11 @@
-// fetcho.test.ts
+// fecho.test.ts
 
-import { TypedResponse } from './../src/types';
-import { fetcho } from './../src/fetcho';
+import { TypedResponse } from '../src/types';
+import { fecho } from './../src/fecho';
 
 global.fetch = jest.fn(); // Mock the fetch global
 
-describe('fetcho', () => {
+describe('fecho', () => {
   const apiUrl = 'https://jsonplaceholder.typicode.com/todos/1';
 
   beforeEach(() => {
@@ -23,7 +23,7 @@ describe('fetcho', () => {
 
     (fetch as jest.Mock).mockResolvedValueOnce(mockResponse);
 
-    const response = await fetcho<{ title: string }>(apiUrl);
+    const response = await fecho<{ title: string }>(apiUrl);
 
     expect(fetch).toHaveBeenCalledWith(apiUrl, undefined);
     expect(response).toEqual(mockResponse);
@@ -47,7 +47,7 @@ describe('fetcho', () => {
       completed: false,
     });
 
-    const response = await fetcho<{ success: boolean }>(apiUrl, {
+    const response = await fecho<{ success: boolean }>(apiUrl, {
       method: 'POST',
       body: requestBody,
       headers: {
@@ -75,9 +75,9 @@ describe('fetcho', () => {
     });
 
     await expect(
-      fetcho(apiUrl, {
+      fecho(apiUrl, {
         method: 'GET',
-        // @ts-expect-error
+        // @ts-expect-error Testing invalid body
         body: requestBody,
       }),
     ).rejects.toThrowError('HTTP method GET does not allow a body');
@@ -86,7 +86,7 @@ describe('fetcho', () => {
   it('should handle a network error gracefully', async () => {
     (fetch as jest.Mock).mockRejectedValueOnce(new Error('Network Error'));
 
-    await expect(fetcho(apiUrl)).rejects.toThrowError('Network Error');
+    await expect(fecho(apiUrl)).rejects.toThrowError('Network Error');
   });
 
   it('should set default headers when none are provided', async () => {
@@ -99,7 +99,7 @@ describe('fetcho', () => {
 
     (fetch as jest.Mock).mockResolvedValueOnce(mockResponse);
 
-    const response = await fetcho<{ title: string }>(apiUrl);
+    const response = await fecho<{ title: string }>(apiUrl);
 
     expect(fetch).toHaveBeenCalledWith(apiUrl, undefined);
     const jsonData = await response.json();
