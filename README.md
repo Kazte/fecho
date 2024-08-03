@@ -1,13 +1,13 @@
-# fetchx
+# fetcho
 
 A fetch wrapper with typesafe and easy to use.
 
 ## Install
 
 ```shell
-npm install fetchx
+npm install fetcho
 
-yarn add fetchx
+yarn add fetcho
 ```
 
 ## Usage

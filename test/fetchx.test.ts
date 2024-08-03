@@ -1,11 +1,11 @@
-// fetchx.test.ts
+// fetcho.test.ts
 
 import { TypedResponse } from './../src/types';
-import { fetchx } from './../src/fetchx';
+import { fetcho } from './../src/fetcho';
 
 global.fetch = jest.fn(); // Mock the fetch global
 
-describe('fetchx', () => {
+describe('fetcho', () => {
   const apiUrl = 'https://jsonplaceholder.typicode.com/todos/1';
 
   beforeEach(() => {
@@ -23,7 +23,7 @@ describe('fetchx', () => {
 
     (fetch as jest.Mock).mockResolvedValueOnce(mockResponse);
 
-    const response = await fetchx<{ title: string }>(apiUrl);
+    const response = await fetcho<{ title: string }>(apiUrl);
 
     expect(fetch).toHaveBeenCalledWith(apiUrl, undefined);
     expect(response).toEqual(mockResponse);
@@ -47,7 +47,7 @@ describe('fetchx', () => {
       completed: false,
     });
 
-    const response = await fetchx<{ success: boolean }>(apiUrl, {
+    const response = await fetcho<{ success: boolean }>(apiUrl, {
       method: 'POST',
       body: requestBody,
       headers: {
@@ -75,7 +75,7 @@ describe('fetchx', () => {
     });
 
     await expect(
-      fetchx(apiUrl, {
+      fetcho(apiUrl, {
         method: 'GET',
         // @ts-expect-error
         body: requestBody,
@@ -86,7 +86,7 @@ describe('fetchx', () => {
   it('should handle a network error gracefully', async () => {
     (fetch as jest.Mock).mockRejectedValueOnce(new Error('Network Error'));
 
-    await expect(fetchx(apiUrl)).rejects.toThrowError('Network Error');
+    await expect(fetcho(apiUrl)).rejects.toThrowError('Network Error');
   });
 
   it('should set default headers when none are provided', async () => {
@@ -99,7 +99,7 @@ describe('fetchx', () => {
 
     (fetch as jest.Mock).mockResolvedValueOnce(mockResponse);
 
-    const response = await fetchx<{ title: string }>(apiUrl);
+    const response = await fetcho<{ title: string }>(apiUrl);
 
     expect(fetch).toHaveBeenCalledWith(apiUrl, undefined);
     const jsonData = await response.json();

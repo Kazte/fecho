@@ -7,7 +7,7 @@ import { TypedRequestInit, TypedResponse } from './types';
  * @param init - The initialization options for the request.
  * @returns A Promise that resolves to the typed response.
  */
-export async function fetchx<ResponseType = any>(
+export async function fetcho<ResponseType = any>(
   input: RequestInfo | URL | string,
   init?: TypedRequestInit,
 ): Promise<TypedResponse<ResponseType>> {

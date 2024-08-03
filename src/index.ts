@@ -1,1 +1,1 @@
-export * from './fetchx';
+export * from './fetcho';
