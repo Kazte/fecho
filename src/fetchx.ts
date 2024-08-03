@@ -1,4 +1,4 @@
-import { TypedRequestInit } from './types';
+import { TypedRequestInit, TypedResponse } from './types';
 
 /**
  * A typesafe fetch function.
@@ -22,8 +22,4 @@ export async function fetchx<ResponseType = any>(
   const response = await fetch(input, init);
 
   return response;
-}
-
-interface TypedResponse<T> extends Response {
-  json(): Promise<T>;
 }

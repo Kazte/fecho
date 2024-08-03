@@ -4,6 +4,10 @@ export type PreparedHeaders = Partial<{
   Authorization: string;
 }>;
 
+export interface TypedResponse<T> extends Response {
+  json(): Promise<T>;
+}
+
 export type TypedHeaders = RequestInit['headers'] & PreparedHeaders;
 
 export type MimeTypes =
