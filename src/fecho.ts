@@ -6,6 +6,11 @@ import { TypedRequestInit, TypedResponse } from './types';
  * @param input - The input URL or RequestInfo.
  * @param init - The initialization options for the request.
  * @returns A Promise that resolves to the typed response.
+ *
+ * @example
+ * const response = await fecho('https://jsonplaceholder.typicode.com/todos/1');
+ * const json = await response.json();
+ * console.log(json);
  */
 export async function fecho<ResponseType = any>(
   input: RequestInfo | URL | string,
