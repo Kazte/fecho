@@ -8,6 +8,23 @@ A fetch wrapper with typesafe and easy to use.
 npm install fetcho
 
 yarn add fetcho
+
+pnpm add fetcho
 ```
 
 ## Usage
+
+```typescript
+import { fetcho } from 'fetcho';
+
+type User = {
+  id: number;
+  name: string;
+};
+
+const response = await fetcho<User>(
+  'https://jsonplaceholder.typicode.com/users/1',
+);
+
+console.log(response.data); // { id: 1, name: 'Leanne Graham' }
+```
