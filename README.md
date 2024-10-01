@@ -5,11 +5,11 @@ A fetch wrapper with typesafe and easy to use.
 ## Install
 
 ```shell
-npm install fetcho
+npm install fecho
 
-yarn add fetcho
+yarn add fecho
 
-pnpm add fetcho
+pnpm add fecho
 ```
 
 ## Usage
