@@ -15,14 +15,14 @@ pnpm add fetcho
 ## Usage
 
 ```typescript
-import { fetcho } from 'fetcho';
+import { fecho } from 'fecho';
 
 type User = {
   id: number;
   name: string;
 };
 
-const response = await fetcho<User>(
+const response = await fecho<User>(
   'https://jsonplaceholder.typicode.com/users/1',
 );
 
