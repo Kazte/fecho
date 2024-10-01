@@ -1,4 +1,4 @@
-# fetcho
+# fecho
 
 A fetch wrapper with typesafe and easy to use.
 
